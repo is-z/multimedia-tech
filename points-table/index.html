@@ -21,16 +21,27 @@
  <input type="button" id="c4" value="I">
  <input type="button" id="AXA" value="AXA">
  <hr>
+
+ <div class="container">
  <div id="raspuns">
-
-
-
 
  </div>
 
+ <canvas id="smile" width="500" height="500">
+    <p>Ваш браузер не поддерживает рисование.</p>
+  </canvas>
+</div>
 </body>
 </html>
 <style>
+    .container {
+        display: flex;
+    }
+
+    canvas{
+        border: 1px solid red;
+    }
+
     td{
         border: 1px solid silver;
         margin: 1px;

@@ -3,8 +3,8 @@ var Punct = /** @class */ (function () {
         this.litera = String.fromCharCode(65 + x - 1);
         // this.x = ((Math.random()>0.5)?-1:1)*(Math.random()*100).toFixed(2);
         // this.y = ((Math.random()>0.5)?-1:1)*(Math.random()*100).toFixed(2);
-        this.x = Math.floor(((Math.random() > 0.5) ? -1 : 1) * (Math.random() * 100).toFixed(2));
-        this.y = Math.floor(((Math.random() > 0.5) ? -1 : 1) * (Math.random() * 100).toFixed(2));
+        this.x = Math.floor(((Math.random() > 0.5) ? -1 : 1) * (Math.random() * 100));
+        this.y = Math.floor(((Math.random() > 0.5) ? -1 : 1) * (Math.random() * 100));
         this.visible = true;
     }
     //
@@ -62,5 +62,61 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         temp += '</table>';
         document.querySelector('#raspuns').innerHTML = temp;
+        //------------ CANVAS-------------------
+        var drawingCanvas = document.getElementById('smile');
+        if (drawingCanvas && drawingCanvas.getContext) {
+            var context = drawingCanvas.getContext('2d');
+            var x0 = 250;
+            var y0 = 250;
+            context.clearRect(0, 0, 500, 500);
+            context.beginPath();
+            context.moveTo(x0, 0);
+            context.lineTo(x0, 500);
+            context.moveTo(0, y0);
+            context.lineTo(500, x0);
+            context.closePath();
+            context.stroke();
+            context.fill();
+            for (var _a = 0, puncte_2 = puncte; _a < puncte_2.length; _a++) {
+                var p = puncte_2[_a];
+                context.strokeStyle = "#000";
+                context.fillStyle = "#fc0";
+                context.beginPath();
+                context.arc(x0 + p.x, y0 - p.y, 5, 0, Math.PI * 2, true);
+                context.fillText(p.litera, x0 + p.x - 10, y0 - p.y - 10);
+                context.closePath();
+                context.stroke();
+                context.fill();
+            }
+            // // Рисуем окружность 
+            // context.strokeStyle = "#000";
+            // context.fillStyle = "#fc0";
+            // context.beginPath();
+            // context.arc(100,100,50,0,Math.PI*2,true);
+            // context.closePath();
+            // context.stroke();
+            // context.fill();
+            // // Рисуем левый глаз 
+            // context.fillStyle = "#fff";
+            // context.beginPath();
+            // context.arc(84,90,8,0,Math.PI*2,true);
+            // context.closePath();
+            // context.stroke();
+            // context.fill();
+            // // Рисуем правый глаз 
+            // context.beginPath();
+            // context.arc(116,90,8,0,Math.PI*2,true);
+            // context.closePath();
+            // context.stroke();
+            // context.fill();
+            // // Рисуем рот
+            // context.beginPath();
+            // context.moveTo(70,115);
+            // context.quadraticCurveTo(100,130,130,115);
+            // context.quadraticCurveTo(100,150,70,115); 
+            // context.closePath();
+            // context.stroke();
+            // context.fill();
+        }
     }
 });

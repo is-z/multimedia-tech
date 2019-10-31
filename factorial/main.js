@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return p;
     }
+
     //---------------------------------------------
     function V(n) {
         var temp = n.toLocaleString() + '!=';
@@ -23,8 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
             temp += i.toString() + '*';
         }
         temp += n.toString() + '=' + F(n).toString();
-         ===  ===  ==
-        ;
         return temp;
     }
 });
